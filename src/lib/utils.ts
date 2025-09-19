@@ -18,7 +18,7 @@ export const formatChange = (change: number): string => {
 };
 
 export const formatHoldings = (holdings: number): string => {
-  if (holdings === 0) return "0.0500";
+  if (holdings === 0) return "0.0000";
   if (holdings < 1) return holdings.toFixed(4);
   return holdings.toLocaleString("en-US", {
     minimumFractionDigits: 4,
