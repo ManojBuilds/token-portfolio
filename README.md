@@ -34,7 +34,7 @@ A web application to track and manage a portfolio of cryptocurrency tokens, buil
 
 1.  Clone the repository:
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/ManojBuilds/token-portfolio
     ```
 2.  Navigate to the project directory:
     ```bash
@@ -44,6 +44,11 @@ A web application to track and manage a portfolio of cryptocurrency tokens, buil
     ```bash
     pnpm install
     ```
+4.  Create a `.env.local` file by copying the `.env.example` file:
+    ```bash
+    cp .env.example .env.local
+    ```
+5.  Add your environment variables to the `.env.local` file.
 
 ### Running the Development Server
 
