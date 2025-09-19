@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+    --color-background: #212124;
+    --color-foreground: #a1a1aa;
+    --color-muted: #27272a;
+    /* For Buttons*/
+    --color-primary: #a9e851;
+    --color-primary-foreground: #18181b;
+    /* For Buttons*/
+    --color-secondary: #27272a;
+    --color-secondary-foreground: #f4f4f5;
+    --color-border: #a1a1aa;
+    /*85% opacity*/
+    --color-modal-backdrop: #212124;
+}
+
+body {
+    @apply bg-background text-foreground;
+}
+
+.primary-btn {
+    box-shadow:
+        0 0.75px 0 0 rgba(255, 255, 255, 0.2) inset,
+        0 1px 2px 0 rgba(31, 102, 25, 0.4),
+        0 0 0 1px rgba(31, 102, 25, 1);
+}
+.secondary-btn {
+    box-shadow:
+        0 1px 2px 0 rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+.dropdown-shadow {
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.08),
+        0 4px 8px 0 rgba(0, 0, 0, 0.08),
+        0 8px 16px 0 rgba(0, 0, 0, 0.08);
+}
+.search-modal-shadow {
+    box-shadow:
+        0 0 0 1px rgb(24, 24, 27) inset,
+        0 0 0 1.5px rgba(255, 255, 255, 0.06) inset,
+        0 -1px 0 0 rgba(255, 255, 255, 0.04),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 4px 8px 0 rgba(0, 0, 0, 0.32),
+        0 8px 16px 0 rgba(0, 0, 0, 0.32);
+}
+
+.edit-holding-shadow {
+    box-shadow:
+        0 0 0 1px rgba(169, 232, 81, 1),
+        0 0 0 1px rgba(169, 232, 81, 0.2);
+}
