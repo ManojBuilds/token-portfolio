@@ -14,7 +14,7 @@ export const Remove = ({ id }: { id: string }) => {
     <div className="px-4 pb-4">
       <DropdownMenuItem
         onClick={removeWatchlist}
-        className="px-2 py-1 rounded flex items-center gap-2 bg-secondary hover:bg-white/10"
+        className="px-2 py-1 rounded flex items-center gap-2 bg-secondary hover:bg-white/10 cursor-pointer"
       >
         <img
           src={Trash}

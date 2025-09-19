@@ -34,7 +34,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 accentColor: "#a9e851",
                 accentColorForeground: "black",
                 borderRadius: "small",
-                fontStack: "system",
+                fontStack: "rounded",
                 overlayBlur: "small",
               })}
             >

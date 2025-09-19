@@ -97,7 +97,7 @@ export const columns = [
     cell: ({ row, table }) => (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button className="w-[15px] h-[15px] aspect-square">
+          <button className="w-[15px] h-[15px] aspect-square cursor-pointer">
             <img src={More} alt="more" className="w-full h-full" />
           </button>
         </DropdownMenuTrigger>
@@ -105,7 +105,7 @@ export const columns = [
           <div className="px-4 pt-4">
             <DropdownMenuItem
               onClick={() => table.options.meta?.setEditingRowId(row.id)}
-              className="px-2 py-1 rounded flex items-center gap-2 bg-secondary hover:bg-white/10"
+              className="px-2 py-1 rounded flex items-center gap-2 bg-secondary hover:bg-white/10 cursor-pointer"
             >
               <img
                 src={Pencil}
