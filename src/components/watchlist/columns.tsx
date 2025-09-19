@@ -60,7 +60,7 @@ export const columns = [
       return (
         <Sparklines data={info.getValue()}>
           <SparklinesLine
-            color={price_change_percentage_24h > 0 ? "green" : "red"}
+            color={price_change_percentage_24h > 0 ? "#32CA5B" : "#FF3A33"}
           />
         </Sparklines>
       );

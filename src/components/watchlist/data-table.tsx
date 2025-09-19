@@ -101,7 +101,7 @@ const TokenListTable: React.FC<TokenListTableProps> = ({ tokens = [] }) => {
             {table.getPageCount()} pages
           </div>
           <button
-            className="text-[13px] font-medium text-border px-2 py-1 bg-transparent disabled:text-[#52525B]"
+            className="text-[13px] font-medium text-border px-2 py-1 bg-transparent disabled:text-[#52525B] cursor-pointer disabled:cursor-not-allowed"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
@@ -110,7 +110,7 @@ const TokenListTable: React.FC<TokenListTableProps> = ({ tokens = [] }) => {
           <button
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-            className="text-[13px] font-medium text-border px-2 py-1 bg-transparent"
+            className="text-[13px] font-medium text-border px-2 py-1 bg-transparent disabled:text-[#52525B] cursor-pointer disabled:cursor-not-allowed"
           >
             Next
           </button>

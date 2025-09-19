@@ -46,11 +46,10 @@ export const AddTokenModal = ({ isOpen, onClose, data }: Props) => {
 
   const addToWishlist = () => {
     dispatch(addBulkToWatchlist(selectedTokens));
+    setSelectedTokens([]);
+    setQuery("");
     onClose();
   };
-
-  console.log("search", searchResults?.coins?.[0]);
-  console.log("trending", data?.[0]);
 
   const tokensToDisplay = query.length > 0 ? searchResults?.coins : data;
 

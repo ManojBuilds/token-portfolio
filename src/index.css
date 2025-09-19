@@ -51,3 +51,28 @@ body {
         0 0 0 1px rgba(169, 232, 81, 1),
         0 0 0 1px rgba(169, 232, 81, 0.2);
 }
+
+/* Styling the entire scrollbar */
+::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 8px;
+    background: transparent;
+}
+
+/* Styling the track (the area the scrollbar moves along) */
+::-webkit-scrollbar-track {
+    width: 4px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Styling the handle (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Styling the handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

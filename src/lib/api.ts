@@ -64,7 +64,6 @@ export const getTrendingTokens = async () => {
 
   const coinIds = trendingCoins.map((coin: any) => coin.id);
   const combinedData = await fetchAndCombineMarketData(coinIds, trendingCoins);
-  console.log(combinedData);
 
   return { coins: combinedData };
 };
