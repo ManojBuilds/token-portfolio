@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
   flexRender,
   getCoreRowModel,
@@ -26,6 +26,23 @@ const TokenListTable: React.FC<TokenListTableProps> = ({ tokens = [] }) => {
   const dispatch = useDispatch();
   const [editingRowId, setEditingRowId] = React.useState<string | null>(null);
 
+  const updateData = useCallback(
+    (rowIndex: number, columnId: string, value: any) => {
+      if (columnId === "holdings") {
+        const tokenToUpdate = tokens[rowIndex];
+        if (tokenToUpdate) {
+          dispatch(
+            updateHoldings({
+              id: tokenToUpdate.id,
+              holdings: value as number,
+            }),
+          );
+        }
+      }
+    },
+    [tokens, dispatch],
+  );
+
   const table = useReactTable({
     data: tokens,
     columns,
@@ -35,19 +52,7 @@ const TokenListTable: React.FC<TokenListTableProps> = ({ tokens = [] }) => {
     meta: {
       editingRowId,
       setEditingRowId,
-      updateData: (rowIndex: number, columnId: string, value: any) => {
-        if (columnId === "holdings") {
-          const tokenToUpdate = tokens[rowIndex];
-          if (tokenToUpdate) {
-            dispatch(
-              updateHoldings({
-                id: tokenToUpdate.id,
-                holdings: value as number,
-              }),
-            );
-          }
-        }
-      },
+      updateData: updateData,
     },
   });
 

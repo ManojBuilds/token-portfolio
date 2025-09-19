@@ -4,6 +4,7 @@ import { PortfolioPieChart } from "./PieChart";
 import { formatPrice, formatTimestamp } from "../lib/utils";
 import { useMemo } from "react";
 import type { RootState } from "../store/rootReducer";
+import { portfolioTotal } from "../store/slices/watchlistSlice";
 
 const COLORS = [
   "#18C9DD",
@@ -15,12 +16,9 @@ const COLORS = [
 ];
 
 export const Portfolio = () => {
+  const total = useSelector(portfolioTotal);
   const { lastRefreshed, items } = useSelector(
     (state: RootState) => state.watchlist,
-  );
-  const total = useMemo(
-    () => items.reduce((acc, curr) => acc + curr.price * curr.holdings, 0),
-    [items],
   );
 
   const pieChartData = useMemo(() => {

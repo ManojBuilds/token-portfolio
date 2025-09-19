@@ -14,10 +14,15 @@ const initialState: WatchlistState = {
 const watchlistSlice = createSlice({
   name: "watchlist",
   initialState,
-  reducers: {
+  selectors: {
     portfolioTotal: (state) => {
-      state.items.reduce((acc, curr) => acc + curr.price * curr.holdings, 0);
+      return state.items.reduce(
+        (acc, curr) => acc + curr.price * curr.holdings,
+        0,
+      );
     },
+  },
+  reducers: {
     addTokenToWatchlist: (state, action: PayloadAction<Token>) => {
       const existingItem = state.items.find(
         (item) => item.id === action.payload.id,
@@ -109,4 +114,7 @@ export const {
   addBulkToWatchlist,
   refreshPrices,
 } = watchlistSlice.actions;
+
+export const { portfolioTotal } = watchlistSlice.selectors;
+
 export default watchlistSlice.reducer;
