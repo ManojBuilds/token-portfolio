@@ -2,13 +2,19 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateHoldings } from "../../store/slices/watchlistSlice";
 import { Button } from "../ui/button";
+import type { CellContext } from "@tanstack/react-table";
+import type { Token } from "../../types";
 
-export const HoldingsEditor = ({ info }: { info: any }) => {
+export const HoldingsEditor = ({
+  info,
+}: {
+  info: CellContext<Token, number>;
+}) => {
   const dispatch = useDispatch();
   const [value, setValue] = useState(info.getValue());
 
   const onSave = () => {
-    dispatch(updateHoldings({ id: info.row.original.id, holdings: value })); // Dispatch Redux action
+    dispatch(updateHoldings({ id: info.row.original.id, holdings: value }));
     info.table.options.meta?.setEditingRowId(null);
   };
 

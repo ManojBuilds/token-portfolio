@@ -4,7 +4,7 @@ import Star from "../assets/star.png";
 import { Button } from "./ui/button";
 import { cn } from "../lib/utils";
 import { Check } from "lucide-react";
-import type { SearchResult, Token } from "../types";
+import type { Token } from "../types";
 import { useQuery } from "@tanstack/react-query";
 import { searchTokens } from "../lib/api";
 import { useDebounce } from "use-debounce";
@@ -28,7 +28,7 @@ export const AddTokenModal = ({ isOpen, onClose, data }: Props) => {
     data: searchResults,
     isLoading,
     isError,
-  } = useQuery<SearchResult, Error>({
+  } = useQuery({
     queryKey: ["search", debouncedQuery],
     queryFn: () => searchTokens(debouncedQuery),
     enabled: !!debouncedQuery,
@@ -99,7 +99,7 @@ export const AddTokenModal = ({ isOpen, onClose, data }: Props) => {
             )}
             <div
               className={cn(
-                "w-[15px] h-[15px] rounded-full grid place-items-center border border-border ",
+                "w-[15px] h-[15px] aspect-square rounded-full grid place-items-center border border-border ",
                 isSelectedToken && "bg-primary text-black border-0",
               )}
             >
@@ -121,7 +121,7 @@ export const AddTokenModal = ({ isOpen, onClose, data }: Props) => {
             onClick={onClose}
           />
           {/*Content*/}
-          <div className="rounded-xl bg-[#212124] search-modal-shadow sm:w-[640px] sm:h-[480px] fixed top-[50%] left-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] flex flex-col overflow-hidden">
+          <div className="rounded-xl bg-[#212124] search-modal-shadow h-[60svh] sm:w-[640px] sm:h-[480px] fixed top-[50%] left-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] flex flex-col overflow-hidden">
             {/*search*/}
             <input
               className="px-4 py-3 h-[52px] text-sm text-[#71717A] outline-none"

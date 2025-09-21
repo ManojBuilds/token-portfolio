@@ -1,4 +1,3 @@
-import React, { useCallback } from "react";
 import {
   flexRender,
   getCoreRowModel,
@@ -15,33 +14,14 @@ import {
 } from "../ui/table";
 import { columns } from "./columns";
 import type { Token } from "../../types";
-import { useDispatch } from "react-redux";
-import { updateHoldings } from "../../store/slices/watchlistSlice";
+import { useState } from "react";
 
 interface TokenListTableProps {
   tokens?: Token[];
 }
 
 const TokenListTable: React.FC<TokenListTableProps> = ({ tokens = [] }) => {
-  const dispatch = useDispatch();
-  const [editingRowId, setEditingRowId] = React.useState<string | null>(null);
-
-  const updateData = useCallback(
-    (rowIndex: number, columnId: string, value: any) => {
-      if (columnId === "holdings") {
-        const tokenToUpdate = tokens[rowIndex];
-        if (tokenToUpdate) {
-          dispatch(
-            updateHoldings({
-              id: tokenToUpdate.id,
-              holdings: value as number,
-            }),
-          );
-        }
-      }
-    },
-    [tokens, dispatch],
-  );
+  const [editingRowId, setEditingRowId] = useState<string | null>(null);
 
   const table = useReactTable({
     data: tokens,
@@ -52,7 +32,6 @@ const TokenListTable: React.FC<TokenListTableProps> = ({ tokens = [] }) => {
     meta: {
       editingRowId,
       setEditingRowId,
-      updateData: updateData,
     },
   });
 

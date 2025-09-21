@@ -23,32 +23,8 @@ const watchlistSlice = createSlice({
     },
   },
   reducers: {
-    addTokenToWatchlist: (state, action: PayloadAction<Token>) => {
-      const existingItem = state.items.find(
-        (item) => item.id === action.payload.id,
-      );
-      if (!existingItem) {
-        state.items.push({
-          ...action.payload,
-          value: action.payload.price * action.payload.holdings,
-        });
-      }
-    },
     removeTokenFromWatchlist: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
-    },
-    toggleTokenInWatchlist: (state, action: PayloadAction<Token>) => {
-      const existingItemIndex = state.items.findIndex(
-        (item) => item.id === action.payload.id,
-      );
-      if (existingItemIndex !== -1) {
-        state.items.splice(existingItemIndex, 1);
-      } else {
-        state.items.push({
-          ...action.payload,
-          value: action.payload.price * action.payload.holdings,
-        });
-      }
     },
     updateHoldings: (
       state,
@@ -57,24 +33,6 @@ const watchlistSlice = createSlice({
       const item = state.items.find((item) => item.id === action.payload.id);
       if (item) {
         item.holdings = action.payload.holdings;
-        item.value = item.price * item.holdings;
-      }
-    },
-    updateTokenDetails: (
-      state,
-      action: PayloadAction<{
-        id: string;
-        price: number;
-        price_change_percentage_24h: number;
-        sparkline_in_7d: number[];
-      }>,
-    ) => {
-      const item = state.items.find((item) => item.id === action.payload.id);
-      if (item) {
-        item.price = action.payload.price;
-        item.price_change_percentage_24h =
-          action.payload.price_change_percentage_24h;
-        item.sparkline_in_7d = action.payload.sparkline_in_7d;
         item.value = item.price * item.holdings;
       }
     },
@@ -106,11 +64,8 @@ const watchlistSlice = createSlice({
 });
 
 export const {
-  addTokenToWatchlist,
   removeTokenFromWatchlist,
-  toggleTokenInWatchlist,
   updateHoldings,
-  updateTokenDetails,
   addBulkToWatchlist,
   refreshPrices,
 } = watchlistSlice.actions;

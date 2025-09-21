@@ -7,7 +7,6 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import Plus from "../assets/plus-mini.png";
 import { getTrendingTokens } from "../lib/api";
-import type { Token } from "../types";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import type { RootState } from "../store/rootReducer";
@@ -21,19 +20,6 @@ export const Watchlist = () => {
     queryKey: ["trendingTokens"],
     queryFn: getTrendingTokens,
   });
-
-  const formattedTrendingTokens: Token[] =
-    data?.coins.map((coin) => ({
-      id: coin.id,
-      name: coin.name,
-      symbol: coin.symbol,
-      thumb: coin.thumb,
-      price: coin.price,
-      price_change_percentage_24h: coin.price_change_percentage_24h,
-      sparkline_in_7d: coin.sparkline_in_7d,
-      holdings: coin.holdings,
-      value: coin.value,
-    })) || [];
 
   return (
     <MaxWidthWrapper className="max-w-[1384px] mt-12 sm:p-7">
@@ -63,7 +49,7 @@ export const Watchlist = () => {
       <AddTokenModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        data={formattedTrendingTokens || []}
+        data={data?.coins || []}
       />
     </MaxWidthWrapper>
   );
