@@ -121,7 +121,7 @@ export const AddTokenModal = ({ isOpen, onClose, data }: Props) => {
             onClick={onClose}
           />
           {/*Content*/}
-          <div className="rounded-xl bg-[#212124] search-modal-shadow h-[60svh] sm:w-[640px] sm:h-[480px] fixed top-[50%] left-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] flex flex-col overflow-hidden">
+          <div className="rounded-xl bg-[#212124] search-modal-shadow h-[80svh] sm:w-[640px] sm:h-[480px] fixed top-[50%] left-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] flex flex-col overflow-hidden">
             {/*search*/}
             <input
               className="px-4 py-3 h-[52px] text-sm text-[#71717A] outline-none"
